@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-node-deployment
+spec:
+  selector:
+    matchLabels:
+      app: devops
+  template:
+    metadata:
+      labels:
+        app: devops
+    spec:
+      containers:
+      - name: devops
+        image: wood1986/rabbitmq-app:1.0
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3000
+        env:
+        - name: RABBITMQ_URL
+          valueFrom:
+            configMapKeyRef:
+              name: devops-config
+              key: rabbitmq-url
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: devops-node-service
+spec:
+  type: NodePort
+  selector:
+    app: devops
+  ports:
+  - port: 3000
+    targetPort: 3000
+    nodePort: 30100
