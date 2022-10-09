@@ -17,8 +17,8 @@ spec:
         image: wood1986/rabbitmq-app:1.0
         resources:
           limits:
-            memory: "128Mi"
-            cpu: "500m"
+            cpu: "0.25"
+            memory: "256Mi"
         ports:
         - containerPort: 3000
         env:
