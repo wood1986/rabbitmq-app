@@ -1,0 +1,17 @@
+{
+  "name": "devops",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "eslint": "eslint . --ext .mjs,.cjs,.js,.jsx --fix"
+  },
+  "dependencies": {
+    "@polka/send-type": "^0.5.2",
+    "amqplib": "^0.10.3",
+    "eslint": "^8.24.0",
+    "nanoid": "^4.0.0",
+    "polka": "^0.5.2"
+  },
+  "packageManager": "yarn@3.2.3"
+}
