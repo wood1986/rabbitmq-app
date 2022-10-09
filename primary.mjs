@@ -1,6 +1,6 @@
 import amqp from "amqplib";
 
-const connection = await amqp.connect("amqp://localhost");
+const connection = await amqp.connect(`amqp://${process.env.RABBITMQ_URL || "127.0.0.1"}`);
 const channel = await connection.createChannel();
 const TASKS = "tasks";
 const queue = TASKS;
